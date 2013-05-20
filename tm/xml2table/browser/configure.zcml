@@ -7,6 +7,16 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
+  <browser:page
+      for="*"
+      name="xmlfile_view"
+      class=".xmlfileview.XMLFileView"
+      template="xmlfileview.pt"
+      allowed_interface=".xmlfileview.IXMLFileView"
+      permission="zope.Public"
+      />
+
+
   <!-- Resource directory for static media files -->
   <browser:resourceDirectory
     name="tm.xml2table"
