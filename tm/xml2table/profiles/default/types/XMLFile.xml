@@ -6,7 +6,7 @@
   <property name="description"
     i18n:translate="">a content-type that accepts xml file then render a html display</property>
   <property name="content_meta_type">XMLFile</property>
-  <property name="content_icon">document_icon.gif</property>
+  <property name="icon_expr">string:${portal_url}/++resource++tm.xml2table/file_icon.gif</property>
   <property name="product">tm.xml2table</property>
   <property name="factory">addXMLFile</property>
   <property name="immediate_view">atct_edit</property>
