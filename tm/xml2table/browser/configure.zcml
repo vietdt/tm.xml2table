@@ -7,4 +7,10 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
+  <!-- Resource directory for static media files -->
+  <browser:resourceDirectory
+    name="tm.xml2table"
+    directory="static"
+    />
+
 </configure>
