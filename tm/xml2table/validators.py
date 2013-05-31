@@ -2,6 +2,7 @@ from mimetypes import guess_type
 
 from zope.interface import implements
 from ZPublisher.HTTPRequest import FileUpload
+from Acquisition import aq_base
 
 from Products.validation.interfaces.IValidator import IValidator
 from Products.validation.config import validation
@@ -22,7 +23,7 @@ class MimetypeValidator:
         if isinstance(value, FileUpload):
             content_type = value.headers.get('content-type')
         elif isinstance(value, file) or hasattr(aq_base(value), 'filename'):
-            content_type = guess_type(value.filename)
+            content_type = guess_type(value.filename)[0]
         else:
             content_type = None
 
