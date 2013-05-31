@@ -1,4 +1,5 @@
 import os
+from cStringIO import StringIO
 from lxml import etree
 
 from zope.interface import implements, Interface
@@ -31,10 +32,13 @@ class XMLFileView(BrowserView):
         """
         # get default xsl file
         current_path = os.path.abspath(os.path.dirname(__file__))
-        xsl_file = open('%s/static/default.xsl' % current_path , 'rb')
-        xslt = etree.XSLT(etree.parse(xsl_file))
+        xsl_file = self.context.getXSLFile()
+        try:
+            xslt = etree.XSLT(etree.parse(StringIO(xsl_file.data)))
+        except etree.XMLSyntaxError:
+            return 'XSL data is invalid.'
         # get xml data
-        xmlfile = self.context.getFile()
+        xmlfile = self.context.getXMLFile()
         try:
             xml = etree.fromstring(xmlfile.data)
         except etree.XMLSyntaxError:
