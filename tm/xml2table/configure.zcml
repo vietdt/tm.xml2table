@@ -23,4 +23,9 @@
   
   <!-- -*- extra stuff goes here -*- -->
 
+  <subscriber
+    for="Products.ATContentTypes.interfaces.IATFile
+         Products.Archetypes.interfaces.IObjectInitializedEvent"
+    handler=".event.createTable" />
+
 </configure>
